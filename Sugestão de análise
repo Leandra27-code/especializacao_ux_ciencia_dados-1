@@ -1,0 +1,95 @@
+
+Objetivos da análise:
+
+Analisar os fatores que influenciam o atraso nas entregas, identificando padrões e variáveis associadas, e construir modelos para prever atrasos, com o intuito de melhorar o desempenho logístico e a satisfação do cliente.
+
+1.	Qual a taxa de atraso nas entregas?
+Quantos pedidos foram entregues fora do prazo? (Comparar dt_entrega_pedido com dt_previsao_entrega_cliente e usar tp_performance_entrega)
+
+2.	Qual o perfil dos pedidos com atraso?
+Em quais cidades, estados e tipos de praça (cidade_destinatario, uf, tp_praca) ocorrem mais atrasos?
+Quais unidades de negócio (des_unidade_negocio) e centros de distribuição (des_cd_origem) têm mais atrasos?
+
+3.	Como o tempo até a entrega (qtd_dias_tat) varia entre entregas dentro e fora do prazo?
+
+4.	Existe padrão nos horários de despacho e entrega nos pedidos atrasados?
+
+5.	Horários de saída do centro de distribuição (hr_despacho_pedido) e horário de entrega (hr_entrega_pedido) influenciam?
+
+6.	Ocorrências relacionadas a atraso
+
+7.	Existe associação entre flg_existem_ocorrencias (ocorrências de entrega) e atrasos?
+
+8.	Evolução temporal
+
+9.	Os atrasos estão aumentando ou diminuindo ao longo do tempo? (Usar dt_criacao e dt_entrega_pedido)
+
+10.	Impacto do pagamento
+
+11.	O tempo entre criação e pagamento (dt_criacao vs dt_pagamento_pedido) influencia no atraso?
+
+
+
+Análise Descritiva
+
+a.	Frequências e percentuais de atrasos por categoria (cidade, estado, praça, unidade de negócio).
+
+b.	Médias e medianas de qtd_dias_tat por grupo.
+
+12.	Comparações entre grupos
+Testes estatísticos para comparar atrasos entre categorias, como:
+
+Teste Qui-quadrado para associação entre atraso (sim/não) e variáveis categóricas (tp_praca, uf, flg_existem_ocorrencias).
+
+Teste t ou Mann-Whitney para comparar média de dias de entrega (qtd_dias_tat) entre grupos.
+
+13.	Análise temporal
+
+a.	Séries temporais para verificar tendências de atraso ao longo do tempo (dt_criacao ou dt_entrega_pedido).
+
+b.	Gráficos de linha ou barras para visualizar evolução mensal.
+
+
+14.	Modelagem preditiva
+a.	Regressão logística para prever probabilidade de atraso com base nas variáveis disponíveis.
+b.	Regressão linear para modelar os dias até a entrega (qtd_dias_tat) como variável contínua.
+
+
+15.	Análise de correlação
+
+a.	Entre dias para entrega e tempo entre criação e pagamento.
+Teste de Hipótese
+
+Para verificar se diferenças observadas entre grupos (por exemplo, entregas atrasadas vs entregas no prazo) são estatisticamente significativas e não ocorreram por acaso.
+
+1.	estar se a proporção de atrasos é diferente entre as regiões (Capital vs Interior vs Região Metropolitana).
+2.	Verificar se o número médio de dias até a entrega (qtd_dias_tat) difere entre unidades de negócio ou centros de distribuição.
+3.	Testar se a existência de ocorrências (flg_existem_ocorrencias) está associada a atrasos.
+
+Quais testes usar?
+
+●	Qui-quadrado para associações entre variáveis categóricas (exemplo: atraso sim/não vs região).
+●	Teste t ou Mann-Whitney para comparar médias de variáveis contínuas (exemplo: média de dias para entrega entre atrasados e no prazo).
+
+
+Análise de Regressão
+
+Por que usar?
+
+Para entender e quantificar o impacto de múltiplas variáveis ao mesmo tempo na probabilidade de atraso ou no tempo até a entrega. Além disso, a regressão ajuda a fazer previsões e identificar os principais fatores que influenciam o atraso.
+
+
+Tipos de regressão possíveis:
+
+1.	Regressão logística (variável dependente binária: atraso sim/não)
+o	Avalia como variáveis como cidade, estado, tipo de praça, ocorrências, horários influenciam a chance do pedido atrasar.
+o	Exemplo: qual o impacto de ser na Capital vs Interior na probabilidade do atraso?
+
+2.	Regressão linear (variável dependente contínua: dias até entrega)
+o	Estima como os fatores influenciam o tempo em dias para a entrega.
+o	Exemplo: como a hora do despacho ou a unidade de negócio afetam o tempo até a entrega?
+
+
+✔	 Use teste de hipótese para investigar diferenças e associações específicas entre grupos.
+✔	Use regressão para modelar e entender o efeito conjunto de múltiplas variáveis sobre o atraso.
+
